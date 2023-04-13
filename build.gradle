@@ -8,6 +8,7 @@ buildscript {
         androidx_multi_dex_version = '2.0.1'
         androidx_lifecycle_version = '2.6.1'
         androidx_navigation_version = '2.5.3'
+        glide_version = '4.15.1'
     }
 }
 
