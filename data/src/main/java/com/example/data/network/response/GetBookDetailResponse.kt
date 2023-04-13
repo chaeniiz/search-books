@@ -46,5 +46,5 @@ data class GetBookDetailResponse(
     val url: String,
 
     @SerializedName("pdf")
-    val pdf: List<String>
+    val pdf: List<String>?
 )
