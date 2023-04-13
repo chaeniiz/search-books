@@ -1,9 +1,10 @@
 package com.example.booksearch.home
 
-import android.util.Log
 import com.example.booksearch.base.BaseViewModel
 import com.example.domain.repositories.BookRepository
+import com.example.entity.BookDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -12,12 +13,14 @@ class HomeViewModel @Inject constructor(
     private val repository: BookRepository
 ) : BaseViewModel() {
 
+    val state = MutableStateFlow<HomeState>(HomeState.Loading)
+
     fun initialize() = launch {
         val books = repository.getBooks("android")
-        Log.d("chaeniiz:books", books.toString())
-        val bookDetails = books.forEach { book ->
-            repository.getBookDetail(book.isbn13)
+        val bookDetails: MutableList<BookDetail> = mutableListOf()
+        books.forEach { book ->
+            bookDetails.add(repository.getBookDetail(book.isbn13))
         }
-        Log.d("chaeniiz:bookdetails", bookDetails.toString())
+        state.emit(HomeState.Contents(bookDetails))
     }
 }
