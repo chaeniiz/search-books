@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'com.example.booksearch'
-    compileSdk 33
+    compileSdk compile_sdk_version
 
     defaultConfig {
         applicationId "com.example.booksearch"
-        minSdk 28
-        targetSdk 33
+        minSdk min_sdk_version
+        targetSdk compile_sdk_version
         versionCode 1
         versionName "1.0"
 
@@ -39,17 +39,14 @@ android {
 }
 
 dependencies {
-
-    implementation 'androidx.core:core-ktx:1.10.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation project(path: ':data')
     implementation project(path: ':entity')
     implementation project(path: ':domain')
+
+    implementation "androidx.core:core-ktx:$androidx_core_version"
+    implementation "androidx.appcompat:appcompat:$androidx_appcompat_version"
+    implementation "com.google.android.material:material:$android_material_version"
+    implementation "androidx.constraintlayout:constraintlayout:$androidx_constraintlayout_version"
 
     implementation "com.google.dagger:hilt-android:$hilt_version"
     implementation "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
@@ -57,15 +54,19 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     kaptTest "com.google.dagger:hilt-android-compiler:$hilt_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_android_x_compiler_version"
+
     implementation "androidx.lifecycle:lifecycle-common-java8:$androidx_lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidx_lifecycle_version"
     implementation "androidx.navigation:navigation-ui-ktx:$androidx_navigation_version"
-
     implementation "androidx.multidex:multidex:$androidx_multi_dex_version"
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version")
 
     implementation "com.github.bumptech.glide:glide:$glide_version"
+
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$androidx_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_espresso_version"
 }
 
 kapt {

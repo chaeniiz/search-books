@@ -1,14 +1,27 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
+        compile_sdk_version = 33
+        min_sdk_version = 28
+
         retrofit_version = '2.9.0'
         hilt_version = '2.44'
-        coroutines_version = '1.6.4'
         hilt_android_x_compiler_version = '1.0.0'
+        coroutines_version = '1.6.4'
+
         androidx_multi_dex_version = '2.0.1'
         androidx_lifecycle_version = '2.6.1'
         androidx_navigation_version = '2.5.3'
+        androidx_core_version = '1.10.0'
+        androidx_appcompat_version = '1.6.1'
+        androidx_constraintlayout_version = '2.1.4'
+        androidx_junit_version = '1.1.5'
+        androidx_espresso_version = '3.5.1'
+        android_material_version = '1.8.0'
+
         glide_version = '4.15.1'
+
+        junit_version = '4.13.2'
     }
 }
 
