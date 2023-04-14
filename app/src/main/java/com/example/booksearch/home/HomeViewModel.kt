@@ -16,6 +16,7 @@ class HomeViewModel @Inject constructor(
     val state = MutableStateFlow<HomeState>(HomeState.Loading)
 
     fun initialize() = launch {
+        state.emit(HomeState.Loading)
         val books = repository.getBooks("android")
         val bookDetails: MutableList<BookDetail> = mutableListOf()
         books.forEach { book ->

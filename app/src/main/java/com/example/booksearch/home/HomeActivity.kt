@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -32,7 +33,11 @@ class HomeActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.state.collect { state ->
                 when (state) {
-                    HomeState.Error -> TODO()
+                    HomeState.Error -> AlertDialog.Builder(this@HomeActivity).apply {
+                        setPositiveButton(R.string.retry) { _, _ -> viewModel.initialize() }
+                        setNegativeButton(R.string.exit) { _, _ -> this@HomeActivity.finish() }
+                        setMessage(R.string.error_msg)
+                    }.create().show()
                     HomeState.Loading -> {
                         binding.progressBar.visibility = View.VISIBLE
                         binding.recyclerView.visibility = View.GONE
@@ -53,7 +58,12 @@ class HomeActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
             setItemViewCacheSize(10)
             addItemDecoration(object : RecyclerView.ItemDecoration() {
-                override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+                override fun getItemOffsets(
+                    outRect: Rect,
+                    view: View,
+                    parent: RecyclerView,
+                    state: RecyclerView.State
+                ) {
                     outRect.bottom = 24
                 }
             })
