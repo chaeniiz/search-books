@@ -21,7 +21,11 @@ buildscript {
 
         glide_version = '4.15.1'
 
+        ok_http_version = '4.10.0'
+
         junit_version = '4.13.2'
+        mockito_version = '4.5.1'
+        junit5_version = '5.8.2'
     }
 }
 

@@ -64,7 +64,13 @@ dependencies {
 
     implementation "com.github.bumptech.glide:glide:$glide_version"
 
+    implementation "com.squareup.okhttp3:okhttp:$ok_http_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+
+    implementation(platform("org.junit:junit-bom:$junit5_version"))
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
     testImplementation "junit:junit:$junit_version"
+    testImplementation "org.mockito:mockito-core:$mockito_version"
     androidTestImplementation "androidx.test.ext:junit:$androidx_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_espresso_version"
 }

@@ -17,11 +17,15 @@ class HomeViewModel @Inject constructor(
 
     fun initialize() = launch {
         state.emit(HomeState.Loading)
-        val books = repository.getBooks("android")
-        val bookDetails: MutableList<BookDetail> = mutableListOf()
-        books.forEach { book ->
-            bookDetails.add(repository.getBookDetail(book.isbn13))
+        try {
+            val books = repository.getBooks("android")
+            val bookDetails: MutableList<BookDetail> = mutableListOf()
+            books.forEach { book ->
+                bookDetails.add(repository.getBookDetail(book.isbn13))
+            }
+            state.emit(HomeState.Contents(bookDetails))
+        } catch (e: Throwable) {
+            state.emit(HomeState.Error)
         }
-        state.emit(HomeState.Contents(bookDetails))
     }
 }
