@@ -10,4 +10,4 @@ MVVM pattern, Clean Architecture
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android?hl=ko)
 - [Retrofit](http://square.github.io/retrofit/)
 - [OkHttp](http://square.github.io/okhttp/)
-- [Glide](https://github.com/bumptech/glide)
+- [Coil](https://coil-kt.github.io/coil/)

@@ -56,7 +56,6 @@ class HomeActivity : AppCompatActivity() {
         with(binding.recyclerView) {
             adapter = HomeRecyclerAdapter(bookDetails)
             layoutManager = LinearLayoutManager(context)
-            setItemViewCacheSize(10)
             addItemDecoration(object : RecyclerView.ItemDecoration() {
                 override fun getItemOffsets(
                     outRect: Rect,
