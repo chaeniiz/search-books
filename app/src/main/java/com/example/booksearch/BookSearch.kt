@@ -1,11 +1,11 @@
 package com.example.booksearch
 
-import androidx.multidex.MultiDexApplication
+import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Singleton
 
 @Singleton
-open class BookSearchApplication : MultiDexApplication()
+open class BookSearchApplication : Application()
 
 @HiltAndroidApp
 class BookSearch : BookSearchApplication()
